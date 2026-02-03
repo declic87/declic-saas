@@ -72,7 +72,7 @@ export async function POST(request: Request) {
         if (client) {
           // Mettre à jour le paiement existant ou en créer un nouveau
           await prisma.payment.upsert({
-            where: { stripeInvoiceId: invoice.id },
+            where: { id: invoice.id },
             update: {
               status: "PAID",
               paidAt: new Date(),
